@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "GIS";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@*gislibrary*@
+<link rel="stylesheet" href="~/css/gisstyle.css">
+
+
+
+<div class="content-header">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="chlb-dark">@HtmlLocalizer["GIS_Title_Label"]</div>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right bci-dark backgroundcolornone">
+                    <li class="breadcrumb-item">@HtmlLocalizer["DTMS_Title_Label"]</li>
+                    <li class="breadcrumb-item ">@HtmlLocalizer["GIS_Title_Label"] </li>
+                </ol>
+                <button id="print"> <i class="fa fa-print" aria-hidden="true"></i></button>
+
+            </div> <!-- /.col -->
+        </div>
+
+
+    </div>
+</div>
+
+<section class="mtop0">
+    <div class="container-fluid content-area">
+        <div class="row">
+            <div class="col-lg-12 col-12">
+                    <div id="umsmap">
+                    </div>
+                    <div id="popup" class="ol-popup">
+                        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                        <div id="popup-content"></div>
+                    </div>
+                    <button onclick="sidebarfunc()" id="btn"><eorm class="fa fa-bars"></eorm></button>
+                        <div id="bar" class="bar">
+                                     <h3>Base Layer</h3>
+                                   </div>
+                 </div>
+            </div>
+        </div>
+    <div id="legendonPrint"></div>
+</section>
+<script src="~/lib/gislibrary/jspdf.umd.min.js"></script>
+<script type="text/javascript" src="~/js/Gis.js"></script>

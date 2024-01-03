@@ -1,0 +1,281 @@
+﻿@{
+    ViewData["Title"] = "NetworkDashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript" src="~/js/NetworkDashboard.js"></script>
+
+<link rel="stylesheet" href="~/featurestic/css/featurestic.css" asp-append-version="true" />
+
+@*gislibrary*@
+<link rel="stylesheet" href="~/css/GisStyle.css">
+
+@*gislibrary*@
+
+
+<div class="content-header">
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="chlb-dark">
+                    @HtmlLocalizer["NMSDashboard_Heading_Label"]
+                    <span class="blink_me">&emsp;@HtmlLocalizer["Live_Blinker_Label"] &emsp;</span><span class="chlb-dark" id='ct5'></span>
+                </div>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right bci-dark backgroundcolornone">
+
+                    <li class="breadcrumb-item">@HtmlLocalizer["NMS_Title_Label"]</li>
+                    <li class="breadcrumb-item active">@HtmlLocalizer["NMSDashboard_Title_Label"]</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section class="mtop0">
+    <div class="container-fluid content-area">
+
+<div class="row">
+    <div class="col-lg-2 col-12">
+        <div class="box-wraper">
+            <div class="box-wraper-top"></div>
+            <div class="box-wraper-left"></div>
+            <div class="row">
+                <div class="box-wraper-header box-wraper-header-NMS-NoNewtorkDevice"><h4>@HtmlLocalizer["NetworkDeviceCount_Header_Label"]</h4></div>
+                <div class="box-wraper-conent lh21">
+                    <div class="col-lg-12 col-12 tac "><div class="hlb2bigdark digital-font"><span id="Count">4</span> <span class="hlb2dark"> / </span> <span id="TotalNetworkCount">5 </span></div> </div>
+                    <div class="col-lg-12 col-12 margintoptotalcount "><div><span class="totalcountnetwork">In Network</span> <span>  </span> <span class="Innewtorkcount totalcountnetwork">Total Count</span></div> </div>
+
+                </div>
+            </div>
+            <div class="box-wraper-right"></div>
+            <div class="box-wraper-bottom"></div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-12">
+        <div class="box-wraper">
+            <div class="box-wraper-top"></div>
+            <div class="box-wraper-left"></div>
+            <div class="row">
+                <div class="box-wraper-header row box-wraper-header-NMS-NoNewtorkDevice"><h4>@HtmlLocalizer["NetworkEfficiency_Header_Label"]</h4></div>
+                <div class="box-wraper-conent">
+                    <div class="row">
+                        <div class="col-lg-12 col-12">
+                            <div id="Networkefficiency"></div>               
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-wraper-right"></div>
+            <div class="box-wraper-bottom"></div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-12">
+        <div class="box-wraper">
+            <div class="box-wraper-top"></div>
+            <div class="box-wraper-left"></div>
+            <div class="row">
+                <div class="box-wraper-header row "><h4>@HtmlLocalizer["LiveDeviceStatus_Header_Label"]</h4></div>
+                <div class="box-wraper-conent row">
+                    <div class="col-lg-12 col-12 tac">
+                        <div class="row">
+                            <div class="col-lg-2 col-2">
+                                <div class="row lh2-09">
+                                    <div class="col-lg-12 col-12 clbdark-small"> &nbsp; </div>
+                                    <div class="col-lg-12 col-12 clbdark-small"> @HtmlLocalizer["Installed_Value_Label"] </div>
+                                    <div class="col-lg-12 col-12 clbdark-small"> @HtmlLocalizer["Commissioned_Value_Label"]</div>
+                                    <div class="col-lg-12 col-12 clbdark-small"> @HtmlLocalizer["InNetwork_Value_Label"] </div>
+                                    <div class="col-lg-12 col-12 clbdark-small"> @HtmlLocalizer["NotInNetwork_Value_Label"]</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-10   lh2-09 ">
+                                <div class="row lh2-03">
+                                    <div class="col-lg-2 col-2 clbdark-small"> @HtmlLocalizer["TMU_Device_Short_Label"]  </div>
+                                    <div class="col-lg-2 col-2 clbdark-small"> @HtmlLocalizer["SinglePhaseMeter_Header_Label"] </div>
+                                    <div class="col-lg-2 col-2 clbdark-small">@HtmlLocalizer["ThreePhaseMeter_Header_Label"]  </div>
+                                    <div class="col-lg-2 col-2 clbdark-small">@HtmlLocalizer["ThreePhaseLTCTMeter_Header_Label"]  </div>
+                                    <div class="col-lg-2 col-2 clbdark-small"> @HtmlLocalizer["FeederMeter_Header_Label"] </div>
+                                    <div class="col-lg-2 col-2 clbdark-small ml-5"> @HtmlLocalizer["BoundaryMeter_Header_Label"]</div>
+                                </div>
+                                <div class="row  lh2-09">
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="InstalledTMU"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="Installed1phMeters"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="Installed3phMeters"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="Installed3phLTCTMeters"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small">0</div>
+                                    <div class="col-lg-2 col-2 dlbdark-small">0</div>
+                                </div>
+                                <div class="row  lh2-09">
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="CommissionedTMU"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="commissioned1phMeters"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="commissioned3phMeters"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="commissioned3phLTCTMeters"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small">0</div>
+                                    <div class="col-lg-2 col-2 dlbdark-small">0</div>
+                                </div>
+                                <div class="row  lh2-09">
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="InnetworkTMU"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="Innetwork1phMeters"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="Innetwork3phMeters"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="Innetwork3phLTCTMeters"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small">0</div>
+                                    <div class="col-lg-2 col-2 dlbdark-small">0</div>
+                                </div>
+                                <div class="row  lh2-09">
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="NotInnetworkTMU"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="Notinnetwork1phMeters"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="Notinnetwork3phMeters"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small" id="Notinnetwork3phLTCTMeters"> </div>
+                                    <div class="col-lg-2 col-2 dlbdark-small">0</div>
+                                    <div class="col-lg-2 col-2 dlbdark-small">0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-wraper-right"></div>
+            <div class="box-wraper-bottom"></div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-12">
+        <div class="box-wraper">
+            <div class="box-wraper-top"></div>
+            <div class="box-wraper-left"></div>
+            <div class="row ">
+                <div class="box-wraper-header row box-wraper-header-NMS-NetworkInterruptions"><h4>@HtmlLocalizer["LatestNetwokInterruptions_Header_Label"]</h4></div>
+                <div class="box-wraper-conent ">
+                    <div class="row nms-scroll-container" id="nms-scroll-container">
+                        <div class="col-lg-12 col-12" id="scroll-text">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="box-wraper-right"></div>
+            <div class="box-wraper-bottom"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row margin-topfornextrowgap">
+    <div class="col-lg-6 col-12">
+        <div class="box-wraper">
+            <div class="box-wraper-top"></div>
+            <div class="box-wraper-left"></div>
+            <div class="row">
+                <div class="box-wraper-header row box-wraper-header-NMS-NoNewtorkDevice"><h4>@HtmlLocalizer["LiveNetworkStatus_Header_Label"]</h4></div>
+                <div class="box-wraper-conent row">
+                    <div class="col-lg-12 col-12">
+                        <div id="livenetworkchart"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="box-wraper-right"></div>
+            <div class="box-wraper-bottom"></div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-12">
+        <div class="box-wraper">
+            <div class="box-wraper-top"></div>
+            <div class="box-wraper-left"></div>
+            <div class="row">
+
+                <div class="box-wraper-conent">
+                    <div class="row">
+                        <div class="col-lg-12 col-12">
+                                    <div id='umsmap'></div>
+                                    <div id="popup" class="ol-popup">
+                                        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                                        <div id="popup-content"></div>
+                                    </div>
+                                    <button id="btn" onclick="sidebarfunc()"><em class="fa fa-bars"></em></button>
+                                         <div id="bar" class="bar">
+                                           <h3>Base Layer</h3>
+                                       </div>
+                           
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="box-wraper-right"></div>
+            <div class="box-wraper-bottom"></div>
+        </div>
+    </div>
+
+     <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-lg" >
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Live Devices Popup data</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                       <div class="row ">
+                            <table id="networkdashboardtable" class="table table-striped table-bordered align-center">
+                                <caption></caption>
+                                <thead class="one">
+                                    <tr>
+                                       
+                                            <th scope="col">Section Name</th>
+                                            <th scope="col">Substation Name</th>
+                                            <th scope="col">Feeder Name</th>
+                                            <th scope="col">Transformer Serial Number</th>
+                                            <th scope="col">Device Type</th>
+                                       
+                                     </tr>
+                                </thead>
+                            </table>
+                       </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+@*<script>
+
+    function display_ct5() {
+      var x = new Date()
+      var mins = ('0' + x.getMinutes()).slice(-2);
+      var Secs = ('0' + x.getSeconds()).slice(-2);
+
+      /*var ampm = x.getHours() >= 12 ? ' PM' : ' AM';*/
+      var Month = x.getMonth() + 1;
+      //var x1 = x.getMonth() + 1 + "/" + x.getDate() + "/" + x.getFullYear();
+      var x1 = x.getDate() + "/" + Month + "/" + x.getFullYear();
+      // x1 = x1 + x.getHours() + ":" + x.getMinutes() + ":" + x.getSeconds() /*+ ":" + ampm*/;
+      x1 = x1 + " " + x.getHours() + ":" + mins + ":" + Secs /*+ ":" + ampm*/; //modified by yamini
+      document.getElementById('ct5').innerHTML = x1;
+      display_c5();
+    }
+    function display_c5() {
+      var refresh = 1000; // Refresh rate in milli seconds
+      mytime = setTimeout('display_ct5()', refresh)
+    }
+    display_c5()
+</script>*@
+
+<script type="text/javascript" src="~/js/NMSGis.js"></script>
