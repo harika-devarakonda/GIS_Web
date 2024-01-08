@@ -1,0 +1,76 @@
+
+@{
+    ViewData["Title"] = "GISAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*gislibrary*@
+<link rel="stylesheet" href="~/css/GisStyleAdmin.css">
+
+
+<div class="content-header">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="chlb-dark">@HtmlLocalizer["GIS_MintCompound"]</div>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right bci-dark backgroundcolornone">
+                    @*<li class="breadcrumb-item">@HtmlLocalizer["DTMS_Title_Label"]</li>*@
+                    <li class="breadcrumb-item ">@HtmlLocalizer["GIS_MintCompound"] </li>
+                </ol>
+            </div> <!-- /.col -->
+        </div>
+
+
+    </div>
+</div>
+<section class="mtop0">
+    <div class="container-fluid content-area">
+        <div class="row">
+            <div class="col-lg-12 col-12">
+                <div id="umsmap"></div>
+                <div id="popup" class="ol-popup">
+                    <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                    <div id="popup-content"></div>
+                </div>
+                <button onclick="sidebarfunc()" id="sidbtn"><em class="fa fa-bars"></em></button>
+
+  
+                <div id="bar" class="bar">
+                    <h3>Base Layer</h3>
+                </div>
+
+                <div id="createGeom" onclick="enableGeometryfunction()">
+                    <button id="selectgeom">&#10011; Add</button>
+
+                    <div class="dropdown_gis" id="dropdowngeom">
+                        <select class="form-select" id="type">
+                            <option value="None" data-layer-name="dummy" layer-geometry="none"> Select Layer </option>
+                            <option value="Point" data-layer-name="DTR_C" layer-geometry="DTR_MAP">&#9650; DTR</option>
+                            <option value="Point" data-layer-name="SERVICE_POINTS_C" layer-geometry="SERVICE_POINTS_MAP">&#9679; Service Point</option>
+                            <option value="LineString" data-layer-name="SERVICE_LINES_C" layer-geometry="SERVICE_LINES_MAP">&#8596; Service Lines</option>
+                            <option value="Point" data-layer-name="HT_POLE_C" layer-geometry="HT_POLE_MAP">&#9672; Ht Pole</option>
+                            <option value="Point" data-layer-name="LT_POLE_C" layer-geometry="LT_POLE_MAP">&#9674; Lt Pole</option>
+                            <option value="LineString" data-layer-name="HT_LINES_C" layer-geometry="HT_LINES_MAP">&#9866; Ht Lines</option>
+                            <option value="LineString" data-layer-name="LT_LINES_C" layer-geometry="LT_LINES_MAP">&#8596; Lt Lines</option>
+                            <option value="Polygon" data-layer-name="substation_c" layer-geometry="Substation_Map_Data">&#9634; Substation</option>
+                        </select>
+                    </div>
+                    <button onclick="AddAtrributes()" id="AddAtrributes">Add Atrributes </button>
+
+                </div>
+   
+                  <div id="ModifyFeatues">
+
+                    <button onclick="saveModified_feature()" id="SaveModifiedfeature">Save Feature</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<script type="text/javascript" src="~/js/Gisadmin.js"></script>
