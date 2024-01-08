@@ -1,0 +1,591 @@
+#umsmap, metergismap {
+    width: 100%;
+    height: 80vh;
+}
+
+#NMSMap, MainDashBoardMap {
+    width: 100%;
+    height: 100vh;
+}
+
+.bar {
+    position: absolute;
+    display: none;
+    top: 10px;
+    padding: 5px 5px;
+    border-radius: 30px;
+    border: solid white 1px;
+    bottom: 0px;
+    height: 70%;
+    overflow-y: scroll; 
+    width: 23%;
+    right: 35px;
+    background-color: rgb(2, 28, 27);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    transition-duration: 500ms;
+    transition-property: all;
+   
+}
+#sidbtn {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 20%;
+    padding: 4px;
+    border: solid rgb(102, 102, 102,0.5) 0.5px;
+}
+
+h3, h6 {
+    text-align: center;
+    margin: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color:aqua
+}
+h4 {
+    color: aqua;
+    text-align:center;
+}
+#Modify {
+    position: relative;
+    top: 55px;
+    border-radius: 50px;
+    border: none;
+    padding: 2px;
+    border: solid blue 1px;
+}
+
+
+.bar::-webkit-scrollbar {
+    /* height: 4px; */
+    display: block;
+    /* max-height: 14px; */
+    width: 15px;
+    border-radius: 100px;
+    padding: 150px;
+}
+
+.bar::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+    padding: 50px;
+    margin: 20px;
+    background-clip: content-box;
+    /* THIS IS IMPORTANT */
+}
+
+.bar::-webkit-scrollbar-thumb {
+    background: linear-gradient(rgba(39, 38, 38,0.7),rgba(0, 255, 255, 0.2));
+    border-radius: 20px;
+    border: 2px blue solid;
+}
+
+    .bar::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(rgba(39, 38, 38,0.7),rgba(0, 255, 255, 0.2));
+        cursor: zoom-in;
+    }
+
+.ol-popup {
+    position: absolute;
+    /* background-color:whitesmoke;
+       */
+    background-color: #000000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid #cccccc;
+    bottom: 12px;
+    left: -50px;
+    min-width: 300px;
+    /*overflow-y: scroll;*/
+    color: #00FFFF;
+}
+
+tr, td {
+    text-align: center;
+    color: #00FFFF;
+    border: 2px solid #bebebe;
+}
+
+#popup-content {
+    display: block;
+    text-align:right;
+}
+
+.ol-popup:after, .ol-popup:before {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.ol-popup:after {
+    border-top-color: whitesmoke;
+    border-width: 10px;
+    left: 48px;
+    margin-left: -10px;
+}
+
+.ol-popup:before {
+    border-top-color: #cccccc;
+    border-width: 11px;
+    left: 48px;
+    margin-left: -11px;
+}
+
+.ol-popup-closer {
+    text-decoration: none;
+    position: absolute;
+    top: 2px;
+    right: 8px;
+}
+
+    .ol-popup-closer:after {
+        content: "✖";
+    }
+
+#special {
+    position: relative;
+    width: auto;
+    height: auto;
+    padding: 6px;
+    /* overflow-x: scroll;*/
+}
+
+
+    #special table {
+        font-weight: bold;
+        padding-top: 5px;
+        margin-top: 15px;
+        padding:6px;
+        padding-top: 25px;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+        #special table th {
+            margin-top: 15px;
+            color: #dddddd !important;
+            font-size: 13px !important;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* font-weight: 600 !important; */
+        }
+
+        #special table th,
+        #special table td {
+            border: 1px solid #00FFFF;
+            padding: 4px;
+            font-size: 12px;
+            /*overflow-y: hidden !important;*/
+            margin: 10px;
+        
+            /* color: #abbdbd; */
+            /* font-weight: 300; */
+        }
+
+        #special table td {
+            /* border:1px solid #00FFFF; */
+            padding: 4px;
+            font-size: 12px;
+            /*overflow-y: hidden !important;*/
+            margin: 10px;
+            /* color: #abbdbd; */
+            font-weight: 400;
+            text-align:center
+      
+        }
+#getlayer_info, #modify_Geometry, #modify_Attribute, #delete_feature {
+    background-color: rgba(39, 38, 38,0.7);
+    color: aqua;
+
+}
+#DtrOmsPopup {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    overflow-y: auto;
+}
+
+    #DtrOmsPopup table {
+        width: 97%;
+        font-weight: bold;
+        padding-top: 5px;
+        margin-top: 15px;
+        padding-top: 25px;
+        white-space: nowrap;
+    }
+
+        #DtrOmsPopup table th {
+            margin-top: 15px;
+            color: #dddddd !important;
+            font-size: 14px !important;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* font-weight: 600 !important; */
+        }
+
+        #DtrOmsPopup table th,
+        #DtrOmsPopup table td {
+            border: 1px solid #00FFFF;
+            padding: 4px;
+            font-size: 11px;
+            /*overflow-y: hidden !important;*/
+            margin: 10px;
+            /* color: #abbdbd; */
+            font-weight: 500;
+        }
+
+        #DtrOmsPopup table td {
+            /* border:1px solid #00FFFF; */
+            padding: 4px;
+            /*font-size: 10px;*/
+            /*overflow-y: hidden !important;*/
+            margin: 11px;
+            /* color: #abbdbd; */
+            /*font-weight: 100;*/
+        }
+
+    #DtrOmsPopup::-webkit-scrollbar {
+        /* height: 4px; */
+        display: block;
+        /* max-height: 14px; */
+        width: 15px;
+        border-radius: 100px;
+        padding: 150px;
+    }
+
+    #DtrOmsPopup::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+        padding: 40px;
+        margin: 20px;
+        background-clip: content-box;
+        /* THIS IS IMPORTANT */
+    }
+
+    #DtrOmsPopup::-webkit-scrollbar-thumb {
+        background: linear-gradient(rgba(39, 38, 38,0.7),rgba(0, 255, 255, 0.2));
+        border-radius: 20px;
+        border: 2px blue solid;
+    }
+
+        #DtrOmsPopup::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(rgba(39, 38, 38,0.7),rgba(0, 255, 255, 0.2));
+            cursor: zoom-in;
+        }
+
+#serviceCenter,{
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 20%;
+    padding: 4px;
+    border: solid rgb(102, 102, 102,0.5) 0.5px;
+}
+Consumermeter {
+    position: relative;
+    top: -20px;
+    right: 150px;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 20%;
+    padding: 4px;
+    border: solid rgb(102, 102, 102,0.5) 0.5px;
+}
+
+#drawBar {
+    height: 98%;
+    width: 15x;
+    position: relative;
+    right: 10px;
+    background-image: linear-gradient(to right,rgb(0,196,255,0.5),rgb(0,0,0,0.5));
+    top: 10px;
+}
+
+#dropdowngeom {
+    position: relative;
+    display: flex;
+    top: 50px;
+    border-radius: 50px;
+    width: auto;
+    height: auto;
+    /* cursor: pointer; */
+    /* all 0.3s ease; */
+}
+/* .dropdown:hover{
+      padding: 10px 40px;
+    } */
+
+.dp {
+    background-color: rgb(0, 196, 255,0.5);
+    border-radius: 50px;
+    padding: 2px;
+    border: solid white 1px;
+}
+
+    .dp:hover {
+        outline: solid 1px #666666;
+    }
+
+#clear, #draw {
+    position: relative;
+    top: 58px;
+    border-radius: 50px;
+    border: none;
+    padding: 2px;
+    border: solid blue 1px;
+}
+
+#draw {
+    left: 240px
+}
+
+#removeInteractions {
+    margin-top: 60px;
+    background-color: white;
+    border-radius: 50px;
+    border: none;
+    padding: 2px;
+    border: solid blue 1px;
+}
+    #clear:hover, #modify:hover, #removeInteractions:hover {
+        outline: solid 1px #666666;
+    }
+
+#undo:hover::before {
+    content: "Remove Last Drawn";
+    display: flex;
+    background-color: rgb(102, 102, 102,0.3);
+    border-radius: 50px;
+    color: #de1717;
+    padding: 3px 3px;
+    position: absolute;
+    top: 35px; /* Adjust as needed */
+    left: 290px; /* Adjust as needed */
+    z-index: 1;
+    width: auto;
+}
+
+#undo:hover {
+    outline: solid 1px #666666;
+}
+
+.sidebar:hover {
+    outline: solid 1px #666666;
+}
+
+#legend:hover {
+    outline: solid 1px #666666;
+}
+
+.ol-overviewmap.ol-collapsed {
+    bottom: 40px;
+}
+
+.ol-overviewmap:not(.ol-collapsed) {
+    bottom: 40px;
+}
+
+.ol-overviewmap.ol-control button {
+    background-color: rgb(0, 196, 255,0.5);
+    border: solid white 1px;
+    border-radius: 5px;
+}
+
+    .ol-overviewmap.ol-control button:hover {
+        outline: solid 1px #666666;
+    }
+
+.ol-zoomslider.ol-control {
+    top: 100px;
+    background-color: rgb(0, 196, 255,0.5);
+    border: solid white 1px;
+    border-radius: 5px;
+}
+
+    .ol-zoomslider.ol-control:hover {
+        outline: solid 1px #666666;
+    }
+
+/* Sidebar */
+.offcanvas.offcanvas-start {
+    width: 15% !important;
+}
+
+.offcanvas-header {
+    width: 200px;
+}
+
+.offcanvas-body {
+    width: 200px;
+    display: flex;
+}
+
+
+.dropdown-container {
+    display: flex !important;
+    flex-direction: column;
+}
+
+.buttons {
+    margin-top: 10px; /* Adjust this value as needed */
+}
+
+#Modify {
+    margin-top: 6px;
+    background-color: #fefcfc;
+}
+
+.hidden {
+    display: none;
+}
+
+    .hidden button {
+        background-color: #fefcfc;
+        border-radius: 50px !important;
+        padding: 2px;
+        border: solid #2989e2 1px;
+    }
+
+
+#create {
+    position: absolute;
+    display: none;
+    top: 9px;
+    left: 69px;
+    text-align: -webkit-center;
+    margin-bottom: 5px;
+    background-color: #fefcfc;
+    border-radius: 50px;
+    padding: 2px;
+    border: solid #bd3e9f 1px;
+    width: auto;
+}
+
+    #create button, #ModifyFeatues button, #delete button {
+        background-color:black ;
+        border-radius: 50px !important;
+        color:aqua;
+        padding: 2px;
+        border: solid #2989e2 1px;
+    }
+
+button:hover {
+    outline: solid 2px aqua;
+}
+
+#SaveModifiedfeature {
+    position: absolute;
+    display: none;
+    top: 3px;
+    left: 69px;
+    text-align: -webkit-center;
+    margin-bottom: 5px;
+    background-color: #666666;
+    border-radius: 50px;
+    padding: 2px;
+    width: auto;
+}
+
+#delete {
+    position: absolute;
+    display: none;
+    top: 9px;
+    left: 43em;
+    text-align: -webkit-center;
+    margin-bottom: 5px;
+    background-color: #fefcfc;
+    border-radius: 50px;
+    padding: 2px;
+    border: solid #bd3e9f 1px;
+    width: auto;
+}
+/*#square {
+    position: relative;
+    bottom: 98%;
+    left: 1%;
+    pointer-events: auto;
+}*/
+#saveAttribute {
+    color: aquamarine;
+    width: 126px;
+    padding: 2px;
+    margin-top: 5px;
+    background-color: #181f26 !important;
+    border:solid 2px aqua;
+    border-radius:5px;
+}
+ #saveAttribute:hover {
+        font-size: 1.02rem !important;
+        color:aliceblue;
+        border:solid 2px white;
+    }
+    input[type=text] {
+        color: #ffffff;
+        border: solid 2px aqua;
+        width: 126px;
+        padding: 2px;
+        margin: 5px;
+        background: #181f26 !important;
+        text-align: center;
+        font-size: 0.8rem !important;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border-radius: 5px;
+    }
+label {
+    font-size: 0.9rem !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#createGeom select {
+    background: #181f26 !important;
+    color: aqua;
+    border: solid 2px aqua;
+    border-radius: 15px;
+}
+#dropdowngeom{
+    display:none
+}
+#selectgeom {
+    display: block;
+    position: fixed;
+    top: 179px;
+    right: 18px;
+    background: #181f26 !important;
+    color: aqua;
+    border: solid 2px aqua;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+#AddAtrributes {
+    display: none;
+    position: fixed;
+    top: 216px;
+    right: 20px;
+    background: #181f26 !important;
+    color: aqua;
+    border: solid 2px aqua;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+#createGeom {
+    position: fixed;
+    display: block;
+    top: 130px;
+    right: 18px;
+}
+#save_attribute, #cancel_created {
+    color: aquamarine;
+    width: 126px;
+    padding: 2px;
+    margin-top: 5px;
+    background-color: #181f26 !important;
+    border: solid 2px aqua;
+    border-radius: 5px;
+}
