@@ -1,1 +1,115 @@
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outage Management System(V.0.1)</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- <fafa Icons> -->
+  <link rel="stylesheet" href="/Library/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!-- <fafa icons> -->
+
+  <!-- jquery for google api -->
+  <script src="/Library/Libraryjquery/Ajaxgooleapijquery.min.js"></script>
+  <!-- jquery for google api -->
+
+
+  <!-- plugin for autocompelte -->
+  <link rel="stylesheet" href="/Library/Libraryjquery/AutoComplete/jquery-ui.css"> <!--version 1.13.2-->
+
+
+
+
+
+  <!-- plugin for autocompelte -->
+
+  <!-- <bootstrap> -->
+  <link rel="stylesheet" href="/Library/Bootstrap/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+  <script type="module" src="/Library/Bootstrap/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- </bootstrap> -->
+  <!-- <open layers> -->
+  <link rel="stylesheet" href="/Library/V7 ol/V7 ol dist/ol.css">
+  <script src="/Library/V7 ol/V7 ol dist/dist/ol.js"></script>
+  <!-- <open layers> -->
+  <!-- jquery cloud moment -->
+  <script src="/Library/Libraryjquery/cloudmoment.min.js"></script>
+  <!-- jquery cloud moment -->
+</head>
+
+<body>
+  <div id="map"></div>
+  <div id="popup" class="ol-popup">
+    <h2>
+      <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+    </h2>
+    <div id="popup-content"></div>
+  </div>
+  <button id="btn" onclick="Sidebarfunc()"><i class="fa fa-bars"></i></button>
+  <!-- sidebar function start -->
+  <div id="bar" class="bar">
+    <h5>Layers</h5>
+    <input type="radio" name="basemapradio" value="osm_basemap"> OSM Basemap<br>
+    <input type="radio" name="basemapradio" value="Satellite"> Google Map<br>
+    <input type="radio" name="basemapradio" value="stamen"> Stamen Map<br>
+    <input type="radio" name="basemapradio" value="satellite" checked> Satellite<br>
+    <input type="radio" name="basemapradio" value="Dark"> Dark<br>
+    <input type="radio" name="basemapradio" value="Retina"> Retina<br>
+    <!-- <input type="radio" name="basemapradio" value="terrain">Terrain<br> -->
+    <h6>Device Status</h6>
+    <input type="checkbox" name="Details" value="ST_HT_LINES" checked>HT Lines<br>
+    <img
+      src="http://10.10.55.7:8085/geoserver/tHes/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=tHes:ST_HT_LINES&legend_options=fontColor:0x00FFFF;fontSize:14;bgColor:0x000000"><br><br>
+    <input type="checkbox" name="Details" value="ST_HT_POLES" checked>HT Poles<br>
+    <img
+      src="http://10.10.55.7:8085/geoserver/tHes/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=tHes:ST_HT_POLES&legend_options=fontColor:0x00FFFF;fontSize:14;bgColor:0x000000">HT
+    Poles<br><br>
+    <input type="checkbox" name="Details" value="ST_SERVICE_LINES" checked>Service Lines<br>
+    <img
+      src="http://10.10.55.7:8085/geoserver/tHes/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=tHes:ST_SERVICE_LINES&legend_options=fontColor:0x00FFFF;fontSize:14;bgColor:0x000000"><br><br>
+    <input type="checkbox" name="Details" value="ST_UG_LINES" checked>UG Lines<br>
+    <img
+      src="http://10.10.55.7:8085/geoserver/tHes/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=tHes:ST_UG_LINES&legend_options=fontColor:0x00FFFF;fontSize:14;bgColor:0x000000"><br><br>
+    <input type="checkbox" name="Details" value="ET_DTR_DETAIL" checked>DTRs<br>
+    <img
+      src="http://10.10.55.7:8085/geoserver/tHes/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=tHes:ET_DTR_DETAILS&legend_options=fontColor:0x00FFFF;fontSize:14;bgColor:0x000000"><br><br>
+    <input type="checkbox" name="Details" value="ET_METER_DETAILS" checked>Service Points<br>
+    <img
+      src="http://10.10.55.7:8085/geoserver/tHes/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=tHes:ET_METER_DETAILS&legend_options=fontColor:0x00FFFF;fontSize:14;bgColor:0x000000"><br><br>
+
+    <input type="checkbox" name="Details" value="ET_SUBSTATION_DETAILS" checked>Substation<br>
+    <img
+      src="http://10.10.55.7:8085/geoserver/tHes/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=tHes:ET_SUBSTATION_DETAILS&legend_options=fontColor:0x00FFFF;fontSize:14;bgColor:0x000000">Substaion<br><br>
+
+
+  </div>
+  <!-- sidebar function end -->
+
+
+  <!-- autocomplete start  -->
+  <form class="row">
+    <div class="autocomplete" style="width:300px;">
+      <span class="col-auto">
+        <span class="input-group">
+          <!-- <label id="query" class="input-group-text" for="epsg-query">Search for DTR</label> -->
+          <input autocomplete="off" type="text" id="epsg-query" placeholder="Enter DTR Structure code...."
+            class="form-control" size="50" />
+          <button type='submit' class="btn btn-outline-secondary" id="epsg-search">Submit</button>
+
+        </span>
+    </div>
+    </span>
+  </form>
+  <!-- autocomplete end  -->
+
+<script src="main.js"></script>
+<script src="/Library/Libraryjquery/ajaxcallingjquery-3.6.1.js" crossorigin="anonymous"></script>
+
+<script src="/Library/Libraryjquery/AutoComplete/jquery-1.10.2.js"></script> <!--version 1.10.2-->
+
+<script src="/Library/Libraryjquery/AutoComplete/ui/1.11.4/jquery-ui.js"></script> <!--version 1.10.2-->
+
+</body>
+</html>
